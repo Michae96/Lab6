@@ -1,0 +1,38 @@
+<!-- edit-task.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <title>Edit Task</title>
+</head>
+<body>
+<h1>Edit Task</h1>
+
+<form th:action="@{/tasks/edit-task/{id}(id=${task.id})}" method="post">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" th:value="${task.title}" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" th:value="${task.description}"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="dueDate">Due Date</label>
+        <input type="datetime-local" class="form-control" id="dueDate" name="dueDate" th:value="${task.dueDate}" required>
+    </div>
+
+    <!-- Добавляем поле для выбора статуса -->
+    <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" name="status" class="form-control">
+            <option value="PENDING" th:selected="${task.status == 'PENDING'}">Pending</option>
+            <option value="IN_PROGRESS" th:selected="${task.status == 'IN_PROGRESS'}">In Progress</option>
+            <option value="COMPLETED" th:selected="${task.status == 'COMPLETED'}">Completed</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+</body>
+</html>
