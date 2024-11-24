@@ -34,7 +34,7 @@
     </select>
     <br>
 
-    <!-- Добавляем поле для выбора статуса -->
+
     <label for="status">Status:</label>
     <select id="status" th:field="*{status}">
         <option value="PENDING" th:selected="${task.status == 'PENDING'}">Pending</option>
